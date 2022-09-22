@@ -10,6 +10,8 @@ public class QueryProcessor {
         String api = api_query[0];
         String msg = api_query[1];
         System.out.println(msg);
+        Pattern rAM = Pattern.compile("what is (\\d+) plus (\\d+) multiplied by (\\d+)");
+        Matcher mAM = rAM.matcher(msg);
         Pattern rAddition = Pattern.compile("what is (\\d+) plus (\\d+)");
         Matcher mAddition = rAddition.matcher(msg);
         Pattern rMultiply = Pattern.compile("what is (\\d+) multiplied by (\\d+)");
@@ -25,6 +27,9 @@ public class QueryProcessor {
         }
         if (query.toLowerCase().contains("what is your name")) {
             return "Waffle";
+        }
+        if (mAM.matches()){
+            return String.valueOf(Integer.valueOf(mAM.group(1)) + Integer.valueOf(mAM.group(2)) * Integer.valueOf(mAM.group(3)));
         }
         if (mAddition.matches()){
             return String.valueOf(Integer.valueOf(mAddition.group(1)) + Integer.valueOf(mAddition.group(2)));
