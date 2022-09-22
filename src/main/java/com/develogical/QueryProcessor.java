@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 public class QueryProcessor {
 
     public String process(String query) {
-        System.out.println(query);
         String[] api_query = query.split(":", 2);
         String api = api_query[0];
         String msg = api_query[1];
