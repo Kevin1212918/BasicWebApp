@@ -9,11 +9,12 @@ public class QueryProcessor {
         String[] api_query = query.split(":", 2);
         String api = api_query[0];
         String msg = api_query[1];
+        System.out.println(msg);
         Pattern rAddition = Pattern.compile("what is (\\d+) plus (\\d+)");
         Matcher mAddition = rAddition.matcher(msg);
         Pattern rMultiply = Pattern.compile("what is (\\d+) multiplied by (\\d+)");
         Matcher mMultiply = rMultiply.matcher(msg);
-        Pattern rColor = Pattern.compile("what colour is \\w+");
+        Pattern rColor = Pattern.compile("what colour is (\\w+)");
         Matcher mColor = rColor.matcher(msg);
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +

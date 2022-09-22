@@ -35,7 +35,11 @@ public class QueryProcessorTest {
     }
     @Test
     public void knowsAboutMultiply() throws Exception {
-        assertThat(queryProcessor.process("api:what is 9 multiplied by 10"), containsString("20"));
+        assertThat(queryProcessor.process("api:what is 9 multiplied by 10"), containsString("90"));
+    }
+    @Test
+    public void knowsAboutBanana() throws Exception {
+        assertThat(queryProcessor.process("api:what colour is banana"), containsString("yellow"));
     }
 
 }
