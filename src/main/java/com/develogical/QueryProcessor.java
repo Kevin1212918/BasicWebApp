@@ -13,6 +13,8 @@ public class QueryProcessor {
         Matcher mAddition = rAddition.matcher(msg);
         Pattern rMultiply = Pattern.compile("what is (\\d+) multiplied (\\d+)");
         Matcher mMultiply = rMultiply.matcher(msg);
+        Pattern rColor = Pattern.compile("what colour is \\w+");
+        Matcher mColor = rColor.matcher(msg);
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
@@ -26,6 +28,11 @@ public class QueryProcessor {
         }
         if (mMultiply.matches()){
             return String.valueOf(Integer.valueOf(mAddition.group(1)) * Integer.valueOf(mAddition.group(2)));
+        }
+        if (mColor.matches()){
+            if(mColor.group(1).equals("banana")){
+                return "yellow";
+            }
         }
         return "";
     }
