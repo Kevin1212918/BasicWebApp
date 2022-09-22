@@ -16,6 +16,8 @@ public class QueryProcessor {
         Matcher mMultiply = rMultiply.matcher(msg);
         Pattern rColor = Pattern.compile("what colour is (\\w+)");
         Matcher mColor = rColor.matcher(msg);
+        Pattern rFibo = Pattern.compile("what is the (\\d+)th number in the Fibonacci sequence");
+        Matcher mFibo = rFibo.matcher(msg);
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
@@ -35,6 +37,23 @@ public class QueryProcessor {
                 return "yellow";
             }
         }
+        if (mFibo.matches()){
+            int rank = Integer.valueOf(mFibo.group(1))-1;
+            int num1 = 0, num2 = 1;
+  
+            int counter = 0;
+    
+            // Iterate till counter is N
+            while (counter < rank) {
+    
+                int num3 = num2 + num1;
+                num1 = num2;
+                num2 = num3;
+                counter = counter + 1;
+            }
+            return String.valueOf(num1);
+        }
+
         return "";
     }
 }

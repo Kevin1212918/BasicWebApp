@@ -41,5 +41,9 @@ public class QueryProcessorTest {
     public void knowsAboutBanana() throws Exception {
         assertThat(queryProcessor.process("api:what colour is banana"), containsString("yellow"));
     }
+    @Test
+    public void knowsAboutFibo() throws Exception {
+        assertThat(queryProcessor.process("api:what is the 4th number in the Fibonacci sequence"), containsString("2"));
+    }
 
 }
