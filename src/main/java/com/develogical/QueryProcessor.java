@@ -11,7 +11,7 @@ public class QueryProcessor {
         String msg = api_query[1];
         Pattern rAddition = Pattern.compile("what is (\\d+) plus (\\d+)");
         Matcher mAddition = rAddition.matcher(msg);
-        Pattern rMultiply = Pattern.compile("what is (\\d+) multiplied (\\d+)");
+        Pattern rMultiply = Pattern.compile("what is (\\d+) multiplied by (\\d+)");
         Matcher mMultiply = rMultiply.matcher(msg);
         Pattern rColor = Pattern.compile("what colour is \\w+");
         Matcher mColor = rColor.matcher(msg);
@@ -27,7 +27,7 @@ public class QueryProcessor {
             return String.valueOf(Integer.valueOf(mAddition.group(1)) + Integer.valueOf(mAddition.group(2)));
         }
         if (mMultiply.matches()){
-            return String.valueOf(Integer.valueOf(mAddition.group(1)) * Integer.valueOf(mAddition.group(2)));
+            return String.valueOf(Integer.valueOf(mMultiply.group(1)) * Integer.valueOf(mMultiply.group(2)));
         }
         if (mColor.matches()){
             if(mColor.group(1).equals("banana")){
